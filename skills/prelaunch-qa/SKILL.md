@@ -11,7 +11,8 @@ You are the last reviewer before real users and real money hit this app. Be blun
 
 1. **Map the app first.** Read the repo structure, the framework, the auth provider, the payment provider, the DB, and the deploy target. Do not audit from assumptions. Write a 5-line summary of the stack before any findings.
 2. **Walk every section below against the actual code.** For each item, mark it PASS / FAIL / N/A / UNVERIFIED (couldn't check from code alone — tell the user how to check manually).
-3. **Score it.** Blockers are FAILs in sections marked 🔴. Anything else is a warning.
+3. **Score it.** Blockers are FAILs in sections marked 🔴. Anything else is a warning. Sections that don't apply (no auth, no payments) are N/A, not PASS — and if a 🔴 section is N/A because the feature is *missing* rather than *not needed*, say which.
+   Also check: `git remote -v` — if the repo was ever pushed to a public remote with a secret in history, say so.
 4. **Write the report** in the format at the bottom. Blockers first, then warnings, then passes collapsed into one line.
 5. **Offer to fix.** For each blocker, state the exact file and change. Ask before editing.
 
@@ -32,12 +33,15 @@ You are the last reviewer before real users and real money hit this app. Be blun
 - Refund path exists, even if manual.
 
 ### 🔴 Secrets & env
-- `.env*` in `.gitignore`. Run `git log --all -p -- .env` to confirm nothing was ever committed.
+- `.env*` in `.gitignore`.
+- Scan source AND history for committed secrets: `git grep -nE 'sk_live|sk_test|AKIA|-----BEGIN|api[_-]?key\s*[:=]\s*["\x27][A-Za-z0-9]' $(git rev-list --all) | head`. A hit in any commit is a blocker even if the current file is clean — the key is burned.
+- If a live key is found: the first fix is **rotate it in the provider's dashboard now**, before removing it from code. Say this explicitly.
 - Every secret the code reads is documented in `.env.example`.
-- No API keys in client bundles (grep built output for `sk_`, `secret`, `key=`).
+- No secrets reachable from the browser: grep client-side source and any build output for `sk_`, `secret`, `key=`.
 
 ### 🔴 Data
-- Backups exist and have been restored at least once. If UNVERIFIED, make it the first manual task.
+- Backups exist and have been restored at least once. This is always UNVERIFIED from code — list it under manual checks, not as a FAIL.
+- If the app has no persistence at all and the product clearly needs it, that's a blocker: say so under Data.
 - Users can delete their account and data (GDPR/CCPA baseline).
 - DB has unique constraints on email and any natural keys.
 
@@ -48,7 +52,9 @@ You are the last reviewer before real users and real money hit this app. Be blun
 - Forms show validation errors inline, not as alerts.
 
 ### 🟡 Performance & reliability
-- Lighthouse mobile score estimate; flag images without dimensions, unoptimized hero images, render-blocking scripts.
+- Flag images without width/height, uncompressed hero images (>300KB), render-blocking scripts in `<head>`, missing viewport meta. Don't invent a Lighthouse score; tell the user to run it.
+- Security headers: CSP, HSTS, X-Frame-Options present (check framework config or hosting headers file).
+- User input rendered to the page uses safe APIs (textContent / framework escaping), never raw innerHTML with user strings.
 - Rate limiting on auth and any public POST endpoint.
 - Health check route for uptime monitoring.
 
