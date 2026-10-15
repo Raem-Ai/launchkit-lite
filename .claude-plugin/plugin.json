@@ -1,0 +1,7 @@
+{
+  "name": "launchkit-lite",
+  "version": "1.0.0",
+  "description": "Two free skills for indie SaaS: a scored pre-launch QA audit and converting landing-page copy. Full six-skill kit at raem.gumroad.com/l/launchkit.",
+  "author": { "name": "LaunchKit" },
+  "keywords": ["saas", "launch", "qa", "landing-page", "indie", "founder"]
+}
