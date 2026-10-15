@@ -1,0 +1,7 @@
+{
+  "name": "launchkit-lite",
+  "owner": { "name": "LaunchKit" },
+  "plugins": [
+    { "name": "launchkit-lite", "source": "./", "description": "Free pre-launch QA audit + landing copy skills for indie SaaS." }
+  ]
+}
