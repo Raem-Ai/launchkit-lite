@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Which Kit</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f6f4ee; --fg:#17161a; --muted:#6b6873; --line:#dcd8cc;
+  --card:#ffffff; --accent:#1f5f8b; --accent-fg:#ffffff; --soft:#e8eef3;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141317; --fg:#f1efe9; --muted:#a19dab; --line:#2c2a33;
+  --card:#1d1c22; --accent:#6fb3e0; --accent-fg:#0d1a24; --soft:#1a2630; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--display);line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:560px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+h1{font-size:clamp(28px,6vw,40px);font-weight:700;line-height:1.1;margin:0 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 32px;max-width:48ch}
+.q{display:none}
+.q.on{display:block}
+.q h2{font-size:clamp(20px,4.5vw,26px);font-weight:700;margin:0 0 18px;line-height:1.2;text-wrap:balance}
+.opts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.opt{width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:14px 16px;font:500 15px/1.4 var(--mono);color:var(--fg);cursor:pointer;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--accent)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt:active{transform:scale(.99)}
+.prog{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 20px;display:flex;gap:6px;align-items:center}
+.prog i{display:inline-block;width:22px;height:3px;background:var(--line);border-radius:2px}
+.prog i.done{background:var(--accent)}
+.result{display:none;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px 24px}
+.result.on{display:block}
+.result .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+.result h2{font-size:clamp(22px,5vw,30px);margin:0 0 10px;line-height:1.15;text-wrap:balance}
+.result p{margin:0 0 16px;color:var(--muted)}
+.result ul{margin:0 0 22px;padding-left:18px;color:var(--fg)}
+.result li{margin:4px 0}
+.cta{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;font:700 15px var(--display);
+  padding:12px 20px;border-radius:8px;margin-right:10px}
+.alt{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:16px}
+.alt a{color:var(--accent)}
+.restart{background:none;border:0;color:var(--muted);font:500 13px var(--mono);cursor:pointer;padding:0;margin-top:28px;text-decoration:underline}
+[hidden]{display:none!important}
+footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.opt{transition:none}}
+</style></head><body>
+
+<main>
+  <p class="eyebrow">60-second check</p>
+  <h1>Which Claude Code kit is for you?</h1>
+  <p class="lede">Four questions. At the end you get one recommendation, and one of them is free.</p>
+
+  <div class="prog" id="prog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+  <section class="q on" data-q="1">
+    <h2>When you open a terminal, what happens?</h2>
+    <ul class="opts">
+      <li><button class="opt" data-s="dev">I live there. I know what a build step is.</button></li>
+      <li><button class="opt" data-s="mid">I can follow instructions but I'd rather not.</button></li>
+      <li><button class="opt" data-s="new">Honestly, a small wave of dread.</button></li>
+    </ul>
+  </section>
+
+  <section class="q" data-q="2">
+    <h2>What are you trying to ship?</h2>
+    <ul class="opts">
+      <li><button class="opt" data-s="dev">A SaaS with accounts and billing that people pay for.</button></li>
+      <li><button class="opt" data-s="mid">A small tool or site for my business or myself.</button></li>
+      <li><button class="opt" data-s="new">I don't know yet. I want to see what's possible.</button></li>
+    </ul>
+  </section>
+
+  <section class="q" data-q="3">
+    <h2>What's the part you keep putting off?</h2>
+    <ul class="opts">
+      <li><button class="opt" data-s="dev">Stripe webhooks, the privacy policy, launch posts, analytics.</button></li>
+      <li><button class="opt" data-s="mid">Getting the thing online so I can share a link.</button></li>
+      <li><button class="opt" data-s="new">Starting. The blank folder.</button></li>
+    </ul>
+  </section>
+
+  <section class="q" data-q="4">
+    <h2>When Claude Code breaks something, you…</h2>
+    <ul class="opts">
+      <li><button class="opt" data-s="dev">Read the diff, revert, move on.</button></li>
+      <li><button class="opt" data-s="mid">Paste the error and hope.</button></li>
+      <li><button class="opt" data-s="new">Close the window and come back tomorrow.</button></li>
+    </ul>
+  </section>
+
+  <div class="result" id="r-dev">
+    <p class="tag">Your kit</p>
+    <h2>LaunchKit</h2>
+    <p>You can build it. These six skills handle the part after "it works" and they read your repo first.</p>
+    <ul>
+      <li>prelaunch-qa, stripe-billing, legal-pages</li>
+      <li>landing-copy, launch-posts, analytics-setup</li>
+      <li>Install in 30 seconds. $29, unlimited projects.</li>
+    </ul>
+    <a class="cta" href="https://raem.gumroad.com/l/launchkit">Get LaunchKit</a>
+    <p class="alt">Try two skills free first: <a href="https://github.com/Raem-Ai/launchkit-lite">launchkit-lite on GitHub</a></p>
+  </div>
+
+  <div class="result" id="r-new">
+    <p class="tag">Your kit</p>
+    <h2>Starter Kit</h2>
+    <p>Seven skills that make Claude Code behave like a patient expert next to a beginner. Plus a 15-minute guide to the words you'll hear.</p>
+    <ul>
+      <li>start-here, build-simple-app, explain-this</li>
+      <li>put-it-online, save-point, what-broke, teach-me</li>
+      <li>Your first sentence to type is in the README. $39.</li>
+    </ul>
+    <a class="cta" href="https://raem.gumroad.com/l/starterkit">Get the Starter Kit</a>
+  </div>
+
+  <div class="result" id="r-mid">
+    <p class="tag">Your kit</p>
+    <h2>Start free, then decide</h2>
+    <p>You're in between. Install the two free skills, run "am I ready to launch?" on something you've built, and you'll know which kit you need.</p>
+    <ul>
+      <li>prelaunch-qa and landing-copy, MIT licensed</li>
+      <li>Copy two folders into ~/.claude/skills/ and you're done</li>
+    </ul>
+    <a class="cta" href="https://github.com/Raem-Ai/launchkit-lite">Get the free skills</a>
+    <p class="alt">Shipping a paid SaaS? <a href="https://raem.gumroad.com/l/launchkit">LaunchKit</a> · Never coded? <a href="https://raem.gumroad.com/l/starterkit">Starter Kit</a></p>
+  </div>
+
+  <button class="restart" id="restart" hidden>Start over</button>
+
+  <footer>Made by <a href="https://raem.ai">RAEM AI Labs</a>, Miami.</footer>
+</main>
+
+<script>
+(function(){
+  var score={dev:0,mid:0,new:0}, step=1, total=4;
+  var qs=document.querySelectorAll('.q'), bars=document.querySelectorAll('#prog i');
+  var restart=document.getElementById('restart');
+  function show(n){
+    qs.forEach(function(q){q.classList.toggle('on', +q.dataset.q===n)});
+    bars.forEach(function(b,i){b.classList.toggle('done', i<n-1)});
+  }
+  function finish(){
+    qs.forEach(function(q){q.classList.remove('on')});
+    bars.forEach(function(b){b.classList.add('done')});
+    var best='mid', max=-1;
+    for(var k in score){ if(score[k]>max){max=score[k];best=k;} }
+    if(score.dev===score.new && score.dev>=score.mid) best = score.dev>score.mid?'dev':'mid';
+    document.getElementById('r-'+best).classList.add('on');
+    restart.hidden=false;
+    try{ history.replaceState(null,'','#'+best); }catch(e){}
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('.opt').forEach(function(b){
+    b.addEventListener('click',function(){
+      score[b.dataset.s]++;
+      step++;
+      if(step>total) finish(); else show(step);
+    });
+  });
+  restart.addEventListener('click',function(){
+    score={dev:0,mid:0,new:0}; step=1;
+    document.querySelectorAll('.result').forEach(function(r){r.classList.remove('on')});
+    restart.hidden=true;
+    show(1);
+    try{ history.replaceState(null,'',' '); }catch(e){}
+  });
+  var h=(location.hash||'').slice(1);
+  if(h==='dev'||h==='new'||h==='mid'){ qs.forEach(function(q){q.classList.remove('on')}); bars.forEach(function(b){b.classList.add('done')}); document.getElementById('r-'+h).classList.add('on'); restart.hidden=false; }
+})();
+</script>
+</body></html>
