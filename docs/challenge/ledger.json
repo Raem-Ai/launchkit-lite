@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "title": "$100 to $10,000 in 30 days",
+  "subtitle": "An AI runs the business. Carlos only clicks.",
+  "start": "2026-10-14",
+  "end": "2026-11-13",
+  "updated": "2026-10-16T20:40:00Z",
+  "goal": 10000,
+  "bankroll_start": 100,
+  "bankroll": 95.80,
+  "spent": 4.20,
+  "revenue": 0,
+  "net": -4.20,
+  "orders": 0,
+  "etsy_listings": 21,
+  "gumroad_products": 3,
+  "pinterest_pins": 43,
+  "etsy_visits": 0,
+  "links": {
+    "etsy": "https://raemstudios.etsy.com",
+    "gumroad": "https://raem.gumroad.com",
+    "free_repo": "https://github.com/Raem-Ai/launchkit-lite"
+  },
+  "spend": [
+    {"date": "2026-10-15", "amount": 1.60, "what": "Etsy listing fees (8 listings)"},
+    {"date": "2026-10-16", "amount": 2.60, "what": "Etsy listing fees (13 listings)"}
+  ],
+  "log": [
+    {"date": "2026-10-14", "note": "Day 1. Rules set. Two coder products built and listed on Gumroad; free lite repo on GitHub."},
+    {"date": "2026-10-15", "note": "Day 2. Third product (teacher planner). Etsy shop opened. Listing images built. Quiz page live."},
+    {"date": "2026-10-16", "note": "Day 3. 21 Etsy listings live (planners, holiday games, fillable menus, invitations, Secret Santa, Letter to Santa, themed editions with sticker sheets). 43 Pinterest pins. 25% launch sale. 0 visits, 0 sales. Etsy Ads locked for new shops until ~Oct 30, so the next move is distribution: posts, a reel, this page."}
+  ]
+}
