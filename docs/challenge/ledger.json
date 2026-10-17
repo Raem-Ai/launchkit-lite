@@ -4,17 +4,17 @@
   "subtitle": "An AI runs the business. Carlos only clicks.",
   "start": "2026-10-14",
   "end": "2026-11-13",
-  "updated": "2026-10-17T21:30:00Z",
+  "updated": "2026-10-17T19:15:00Z",
   "goal": 10000,
   "bankroll_start": 100,
-  "bankroll": 93.0,
-  "spent": 7.0,
+  "bankroll": 91.0,
+  "spent": 9.0,
   "revenue": 0,
-  "net": -7.0,
+  "net": -9.0,
   "orders": 0,
-  "etsy_listings": 35,
+  "etsy_listings": 45,
   "gumroad_products": 3,
-  "pinterest_pins": 43,
+  "pinterest_pins": 53,
   "etsy_visits": 0,
   "links": {
     "etsy": "https://raemstudios.etsy.com",
@@ -34,8 +34,8 @@
     },
     {
       "date": "2026-10-17",
-      "amount": 2.8,
-      "what": "Etsy listing fees (14 new style editions)"
+      "amount": 4.8,
+      "what": "Etsy listing fees (24 new style editions)"
     }
   ],
   "log": [
@@ -53,7 +53,7 @@
     },
     {
       "date": "2026-10-17",
-      "note": "Day 4. Visual upgrade: every holiday product redesigned with AI-art covers and offered in three styles (bold, watercolor, cozy/rustic), each its own listing. 35 Etsy listings live, 4 more in draft. Still 0 sales."
+      "note": "Day 4. Every product redesigned with research-driven styles (still life, linocut, ski lodge, candyland, cut paper, card catalog, apothecary, pop art, dark academia, gummy y2k\u2026). 45 Etsy listings live, 53 Pinterest pins, listing videos in production. Still 0 sales."
     }
   ]
 }
