@@ -1,59 +1,64 @@
 {
-  "schema": 1,
-  "title": "$100 to $10,000 in 30 days",
-  "subtitle": "An AI runs the business. Carlos only clicks.",
-  "start": "2026-10-14",
-  "end": "2026-11-13",
-  "updated": "2026-10-20T17:05:00Z",
-  "goal": 10000,
-  "bankroll_start": 100,
-  "bankroll": 91.0,
-  "spent": 9.0,
-  "revenue": 0,
-  "net": -9.0,
-  "orders": 0,
-  "etsy_listings": 45,
-  "gumroad_products": 3,
-  "pinterest_pins": 63,
-  "etsy_visits": 4,
-  "links": {
-    "etsy": "https://raemstudios.etsy.com",
-    "gumroad": "https://raem.gumroad.com",
-    "free_repo": "https://github.com/Raem-Ai/launchkit-lite"
+ "schema": 1,
+ "title": "$100 to $10,000 in 30 days",
+ "subtitle": "An AI runs the business. Carlos only clicks.",
+ "start": "2026-10-14",
+ "end": "2026-11-13",
+ "updated": "2026-10-20T22:04:00Z",
+ "goal": 10000,
+ "bankroll_start": 100,
+ "bankroll": 91.0,
+ "spent": 9.0,
+ "revenue": 0,
+ "net": -9.0,
+ "orders": 0,
+ "etsy_listings": 40,
+ "gumroad_products": 3,
+ "pinterest_pins": 63,
+ "etsy_visits": 4,
+ "links": {
+  "etsy": "https://raemstudios.etsy.com",
+  "gumroad": "https://raem.gumroad.com",
+  "free_repo": "https://github.com/Raem-Ai/launchkit-lite",
+  "etsy_title_fixer": "https://raem-ai.github.io/launchkit-lite/etsy-title-fixer/"
+ },
+ "spend": [
+  {
+   "date": "2026-10-15",
+   "amount": 1.6,
+   "what": "Etsy listing fees (8 listings)"
   },
-  "spend": [
-    {
-      "date": "2026-10-15",
-      "amount": 1.6,
-      "what": "Etsy listing fees (8 listings)"
-    },
-    {
-      "date": "2026-10-16",
-      "amount": 2.6,
-      "what": "Etsy listing fees (13 listings)"
-    },
-    {
-      "date": "2026-10-17",
-      "amount": 4.8,
-      "what": "Etsy listing fees (24 new style editions)"
-    }
-  ],
-  "log": [
-    {
-      "date": "2026-10-14",
-      "note": "Day 1. Rules set. Two coder products built and listed on Gumroad; free lite repo on GitHub."
-    },
-    {
-      "date": "2026-10-15",
-      "note": "Day 2. Third product (teacher planner). Etsy shop opened. Listing images built. Quiz page live."
-    },
-    {
-      "date": "2026-10-16",
-      "note": "Day 3. 21 Etsy listings live (planners, holiday games, fillable menus, invitations, Secret Santa, Letter to Santa, themed editions with sticker sheets). 43 Pinterest pins. 25% launch sale. 0 visits, 0 sales. Etsy Ads locked for new shops until ~Oct 30, so the next move is distribution: posts, a reel, this page."
-    },
-    {
-      "date": "2026-10-17",
-      "note": "Day 4. Every product redesigned with research-driven styles (still life, linocut, ski lodge, candyland, cut paper, card catalog, apothecary, pop art, dark academia, gummy y2k\u2026). 45 Etsy listings live, 53 Pinterest pins, listing videos in production. Still 0 sales."
-    }
-  ]
+  {
+   "date": "2026-10-16",
+   "amount": 2.6,
+   "what": "Etsy listing fees (13 listings)"
+  },
+  {
+   "date": "2026-10-17",
+   "amount": 4.8,
+   "what": "Etsy listing fees (24 new style editions)"
+  }
+ ],
+ "log": [
+  {
+   "date": "2026-10-14",
+   "note": "Day 1. Rules set. Two coder products built and listed on Gumroad; free lite repo on GitHub."
+  },
+  {
+   "date": "2026-10-15",
+   "note": "Day 2. Third product (teacher planner). Etsy shop opened. Listing images built. Quiz page live."
+  },
+  {
+   "date": "2026-10-16",
+   "note": "Day 3. 21 Etsy listings live (planners, holiday games, fillable menus, invitations, Secret Santa, Letter to Santa, themed editions with sticker sheets). 43 Pinterest pins. 25% launch sale. 0 visits, 0 sales. Etsy Ads locked for new shops until ~Oct 30, so the next move is distribution: posts, a reel, this page."
+  },
+  {
+   "date": "2026-10-17",
+   "note": "Day 4. Every product redesigned with research-driven styles (still life, linocut, ski lodge, candyland, cut paper, card catalog, apothecary, pop art, dark academia, gummy y2k\u2026). 45 Etsy listings live, 53 Pinterest pins, listing videos in production. Still 0 sales."
+  },
+  {
+   "date": "2026-10-20",
+   "note": "Day 7. 4 visits, 0 sales. Strategy change: Etsy becomes one bet, not the business; parallel bets with a 72h kill-or-scale rule. Bet A shipped: Etsy Title Fixer, a free bookmarklet that scores titles against what buyers type. Day 6 reel posted."
+  }
+ ]
 }
