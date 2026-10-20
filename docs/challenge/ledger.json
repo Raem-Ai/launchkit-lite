@@ -4,15 +4,15 @@
  "subtitle": "An AI runs the business. Carlos only clicks.",
  "start": "2026-10-14",
  "end": "2026-11-13",
- "updated": "2026-10-20T22:04:00Z",
+ "updated": "2026-10-20T23:46:00Z",
  "goal": 10000,
  "bankroll_start": 100,
- "bankroll": 91.0,
- "spent": 9.0,
+ "bankroll": 90.4,
+ "spent": 9.6,
  "revenue": 0,
- "net": -9.0,
+ "net": -9.6,
  "orders": 0,
- "etsy_listings": 40,
+ "etsy_listings": 43,
  "gumroad_products": 3,
  "pinterest_pins": 63,
  "etsy_visits": 4,
@@ -20,7 +20,8 @@
   "etsy": "https://raemstudios.etsy.com",
   "gumroad": "https://raem.gumroad.com",
   "free_repo": "https://github.com/Raem-Ai/launchkit-lite",
-  "etsy_title_fixer": "https://raem-ai.github.io/launchkit-lite/etsy-title-fixer/"
+  "etsy_title_fixer": "https://raem-ai.github.io/launchkit-lite/etsy-title-fixer/",
+  "reel_factory_github": "https://github.com/Raem-Ai/launchkit-lite/tree/main/reel-factory"
  },
  "spend": [
   {
@@ -37,6 +38,11 @@
    "date": "2026-10-17",
    "amount": 4.8,
    "what": "Etsy listing fees (24 new style editions)"
+  },
+  {
+   "date": "2026-10-20",
+   "amount": 0.6,
+   "what": "Etsy listing fees (3 bundles)"
   }
  ],
  "log": [
@@ -58,7 +64,7 @@
   },
   {
    "date": "2026-10-20",
-   "note": "Day 7. 4 visits, 0 sales. Strategy change: Etsy becomes one bet, not the business; parallel bets with a 72h kill-or-scale rule. Bet A shipped: Etsy Title Fixer, a free bookmarklet that scores titles against what buyers type. Day 6 reel posted."
+   "note": "Day 7. 4 visits, 0 sales. Strategy change: Etsy becomes one bet, not the business; parallel bets with a 72h kill-or-scale rule. Bet A shipped: Etsy Title Fixer, a free bookmarklet that scores titles against what buyers type. Day 6 reel posted. Evening: PRO full-shop tool built (40 listings in 73 s), three Etsy bundles live, reel pipeline open-sourced, Reel Factory kit packaged."
   }
  ]
 }
