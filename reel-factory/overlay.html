@@ -1,0 +1,113 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;font-weight:100 900;src:url(brand/inter-latin-var.woff2) format('woff2')}
+@font-face{font-family:Michroma;font-weight:400;src:url(brand/michroma-400.woff2) format('woff2')}
+*{box-sizing:border-box}body{margin:0;background:transparent}
+:root{--paper:#050607;--ink:#f7f4ec;--teal:#36d0c2;--amber:#d89b52;--red:#e5484d;--muted:#adbbbc;--chip:rgba(5,6,7,.84);--hair:rgba(247,244,236,.14);--card:#0d1012}
+#root{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink)}
+.el{position:absolute;opacity:0;will-change:transform}
+.hud{font-family:Michroma,monospace;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.chip{background:var(--chip);border:1px solid var(--hair);border-radius:22px;padding:28px 34px}
+.card{background:var(--card);border:1px solid var(--hair);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.h{font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.money{font-weight:800;color:var(--amber);letter-spacing:-.04em;line-height:1}
+.logo{display:inline-flex;align-items:center;justify-content:center;border-radius:22%;background:#fff}
+.logo svg{width:62%;height:62%}
+.layer{position:absolute;left:0;top:0;width:1080px;overflow:hidden;opacity:0}
+.stamp{border:12px solid var(--red);color:var(--red);border-radius:22px;padding:16px 44px;background:rgba(5,6,7,.82);font-family:Michroma;letter-spacing:.06em;white-space:nowrap}
+.bet{display:flex;align-items:center;gap:30px;background:var(--card);border:1px solid var(--hair);border-radius:22px;padding:26px 34px;margin-top:22px}
+#wm{position:absolute;left:36px;top:60px;display:flex;align-items:center;gap:12px;background:var(--chip);border:1px solid var(--hair);border-radius:999px;padding:8px 20px 8px 10px;opacity:0}
+#wm img{width:40px;height:40px;border-radius:50%}#wm span{font-size:21px;color:var(--muted)}
+canvas{position:absolute;left:0;top:0}
+</style></head><body><div id="root">
+<canvas id="fx" width="1080" height="1920"></canvas>
+<div id="wm"><span>yoursite.com</span></div>
+<div id="stage"></div>
+<div id="full" class="layer" style="height:1920px;opacity:1"></div>
+<div id="cap" style="position:absolute;left:0;width:1080px;display:flex;justify-content:center;opacity:0"><div id="capin" style="max-width:940px;text-align:center;background:rgba(5,6,7,.80);border-radius:20px;padding:14px 28px 16px;font-weight:800;font-size:56px;line-height:1.14;letter-spacing:-.02em;color:#f7f4ec"></div></div>
+<div id="end" class="el" style="left:0;top:0;width:1080px;height:1920px;background:var(--paper)">
+ <div style="position:absolute;left:140px;top:560px;width:800px;text-align:center"><div class="h" style="font-size:72px">YOUR NAME</div><div style="font-size:30px;color:var(--muted);margin-top:36px">@yourhandle</div><div class="hud" style="margin-top:100px">Day 7 · tomorrow · new product?</div><div style="font-size:26px;color:var(--muted);margin-top:30px">yoursite.com</div><div id="endlogos" style="display:flex;gap:34px;justify-content:center;margin-top:60px"></div></div>
+</div></div>
+<script>
+const P=__PLAN__, LOGO=__LOGOS__, CAPS=__CAPS__;
+const GRID='background-color:#050607;background-image:linear-gradient(rgba(247,244,236,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(247,244,236,.045) 1px,transparent 1px);background-size:60px 60px';
+const seg=k=>({t0:P.seg[k][0],t1:P.seg[k][1]});
+const cl=x=>x<0?0:x>1?1:x, ease=x=>1-Math.pow(1-cl(x),3), back=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+function logo(n,size,bg){const s=LOGO[n];return `<span class="logo" style="width:${size}px;height:${size}px;background:${bg||'#fff'}">${s}</span>`}
+function mk(parent,h,s){const d=document.createElement('div');d.className='el';d.innerHTML=h;d.setAttribute('style',s);parent.appendChild(d);return d}
+const st=document.getElementById('stage'), FL=document.getElementById('full');
+function vis(d,t,a,b,o={}){const din=o.din||.35,dout=o.dout||.3;const k=Math.min(ease((t-a)/din),1-ease((t-(b-dout))/dout));if(t<a||t>b){d.style.opacity=0;return 0}
+ d.style.opacity=k;const dy=(o.dy??40)*(1-ease((t-a)/din));const sc=o.pop?(t-a<.45?back((t-a)/.45)*.25+.75:1):1;d.style.transform=`translate(${o.dx?o.dx*(1-ease((t-a)/din)):0}px,${dy}px) scale(${sc}) rotate(${o.rot||0}deg)`;return k}
+function popEl(e,t,a,rot=0,from=.5){e.style.opacity=cl((t-a)/.18);e.style.transform=`scale(${t>=a&&t-a<.45?from+(1-from)*back((t-a)/.45):(t<a?from:1)}) rotate(${rot}deg)`}
+function slamEl(e,t,a,rot=0){const p=(t-a)/.22;e.style.opacity=cl(p);e.style.transform=`scale(${t<a?2.4:1+1.4*Math.max(0,1-ease(p))}) rotate(${rot}deg)`}
+function shake(t,ts){let s=0;for(const a of ts){const p=t-a;if(p>=0&&p<.35)s+=(1-p/.35)*18}return s}
+const W=(id)=>P.full.concat(P.split,P.scene).find(w=>w.id===id);
+const $=id=>document.getElementById(id);
+const endl=$('endlogos'); for(const n of ['etsy','pinterest','gumroad','github']) endl.innerHTML+=logo(n,86,n==='etsy'?'#f1641e':n==='pinterest'?'#e60023':'#fff');
+
+/* INTRO chip */
+const kin=mk(st,`<div class="chip" style="width:1000px"><div class="hud">The challenge · Day 6</div>
+ <div style="display:flex;align-items:baseline;gap:22px;margin-top:16px"><span id="k100" class="money" style="font-size:96px;opacity:0">$100</span><span id="karr" style="font-size:64px;color:var(--muted);opacity:0">→</span><span id="k10k" class="money" style="font-size:96px;opacity:0">$0</span></div>
+ <div id="k30" class="hud" style="margin-top:10px;color:var(--ink);opacity:0">in 30 days · the AI decides, the human clicks</div></div>`,'left:40px;top:1330px');
+/* DAY band */
+const band=mk(st,`<div style="display:flex;align-items:center;gap:26px;background:var(--teal);color:#050607;padding:22px 48px;border-radius:999px;font-family:Michroma;font-size:40px;letter-spacing:.14em">DAY 6 <span style="font-family:Inter;font-weight:800;letter-spacing:-.02em;font-size:38px">☕ WORKING HARD</span></div>`,'left:60px;top:220px');
+/* 2 → 4 VISITS slam (full) */
+const fVis=mk(FL,`<div style="position:absolute;left:0;top:300px;width:1080px;text-align:center"><div class="hud">Etsy shop · 6 days</div>
+ <div style="display:flex;justify-content:center;align-items:baseline;gap:40px;margin-top:30px"><span id="v0" class="h" style="font-size:300px;color:var(--muted);opacity:0">2</span><span id="varr" style="font-size:140px;color:var(--muted);opacity:0">→</span><span id="v2" class="h" style="font-size:380px;color:var(--teal);opacity:0">4</span></div>
+ <div id="vlab" class="h" style="font-size:100px;margin-top:10px;opacity:0">VISITS</div>
+ <div id="vsub" style="margin-top:50px;opacity:0;display:inline-block;background:var(--chip);border:1px solid var(--hair);border-radius:999px;padding:16px 36px;font-size:34px;color:var(--amber)">2 of them from Etsy search 🔎 · 0 sales</div></div>`,'left:0;top:0;width:1080px;height:1920px;'+GRID);
+/* NEW PLAN stamp */
+const sNew=mk(st,`<div class="stamp" style="font-size:84px;transform:rotate(-8deg);border-color:var(--teal);color:var(--teal)">NEW PLAN</div>`,'left:170px;top:280px');
+/* 4 visits / 6 days chip */
+const sSix=mk(st,`<div class="card" style="width:960px;padding:34px 40px"><div style="display:flex;align-items:baseline;gap:26px"><span id="sx0" class="money" style="font-size:96px;opacity:0">4</span><span class="hud" style="font-size:26px">visits</span><span id="sx1" class="money" style="font-size:96px;opacity:0">6</span><span class="hud" style="font-size:26px">days</span></div>
+ <div id="sx2" class="h" style="font-size:44px;margin-top:18px;color:var(--red);opacity:0">Too slow to carry this alone</div>
+ <div id="sx3" style="display:flex;align-items:center;gap:22px;margin-top:22px;opacity:0">${logo('etsy',64,'#f1641e')}<span class="h" style="font-size:44px">= one bet</span><span id="sx4" class="h" style="font-size:44px;color:var(--muted);opacity:0">, not the business</span></div></div>`,'left:60px;top:150px');
+/* MANY BETS board (full) */
+const BETS=[['etsy','Etsy shop','40 listings · running','✓','var(--teal)'],['gumroad','Gumroad','digital tools for builders','NEW','var(--amber)'],['github','GitHub','open-source the tools','NEW','var(--amber)'],['?','Amazon KDP','paperback planners','NEW','var(--amber)'],['?','???','tomorrow','?','var(--muted)']];
+const fBets=mk(FL,`<div style="position:absolute;left:60px;top:230px;width:960px"><div class="hud">One store → many bets</div>
+ ${BETS.map(([l,a,b,s,c],i)=>`<div id="bt${i}" class="bet" style="opacity:0">${l==='?'?`<span class="logo" style="width:84px;height:84px;background:#1a1f22;color:var(--ink);font-weight:900;font-size:40px">${a==='???'?'?':'A'}</span>`:logo(l,84,l==='etsy'?'#f1641e':'#fff')}<div style="flex:1"><div class="h" style="font-size:48px">${a}</div><div style="font-size:30px;color:var(--muted);margin-top:4px">${b}</div></div><span style="font-family:Michroma;font-size:${s.length>1?26:40}px;color:${c};border:3px solid ${c};border-radius:999px;padding:10px 22px">${s}</span></div>`).join('')}
+ <div id="feed" class="h" style="font-size:54px;margin-top:40px;text-align:center;color:var(--teal);opacity:0">Whatever bites, we feed.</div></div>`,'left:0;top:0;width:1080px;height:1920px;'+GRID);
+/* PLANNER WALL (full) + 0 SOLD */
+const PW=['spin-planner','nurse-1','student-1','nb-1'];
+const fWall=mk(FL,`<div style="position:absolute;left:0;top:0;width:1080px;height:1920px;background:#0a0c0d">
+ ${PW.map((p,i)=>`<img src="broll6/${p}.png" style="position:absolute;left:${i%2?550:40}px;top:${i<2?280:1010}px;width:490px;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.6)">`).join('')}
+ <div class="hud" style="position:absolute;left:0;top:180px;width:1080px;text-align:center">The planners · Etsy · Day 1</div>
+ <div id="sold" style="position:absolute;left:140px;top:760px;opacity:0"><div class="stamp" style="font-size:130px;transform:rotate(-12deg);padding:20px 60px">0 SOLD</div></div></div>`,'left:0;top:0;width:1080px;height:1920px');
+/* ??? TOMORROW stamp */
+const sTm=mk(st,`<div class="stamp" style="font-size:62px;transform:rotate(-7deg);border-color:var(--amber);color:var(--amber);padding:14px 36px">??? · TOMORROW</div>`,'left:70px;top:290px');
+/* ask card */
+const sAsk=mk(st,`<div class="card" style="width:940px;padding:40px;text-align:center"><div class="hud">Your call</div><div class="h" style="font-size:58px;margin-top:12px">What should Claude<br>build next?</div><div style="font-size:34px;color:var(--muted);margin-top:22px">Suggestions in the comments 👇 we try them</div></div>`,'left:70px;top:240px');
+const cx=document.getElementById('fx').getContext('2d');
+function spotlight(t,a,b){if(t<a||t>b)return;const k=Math.min(1,(t-a)/.5)*Math.min(1,(b-t)/.25);cx.save();const g=cx.createRadialGradient(560,760,120,560,760,900);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,`rgba(0,0,0,${.78*k})`);cx.fillStyle=g;cx.fillRect(0,0,1080,1920);cx.restore()}
+function flash(t,a,d=0.25){if(t>=a&&t<a+d){cx.save();cx.globalAlpha=(1-(t-a)/d)*.9;cx.fillStyle='#fff';cx.fillRect(0,0,1080,1920);cx.restore()}}
+window.render=function(t){
+ cx.clearRect(0,0,1080,1920);
+ const I=seg('intro'),B=seg('become');
+ let fk=null; for(const w of P.full){if(t>=w.a&&t<=w.b)fk=w}
+ const FA={}; for(const w of P.full){FA[w.id]=(t>=w.a&&t<=w.b)?Math.min(ease((t-w.a)/.3),1-ease((t-(w.b-.3))/.3)):0}
+ const FS={visits:fVis,bets:fBets,wall:fWall};
+ for(const k in FS){FS[k].style.opacity=k==='wall'?(FA[k]>0?1:0):FA[k];FS[k].style.transform=`scale(${1.03-.03*Math.min(1,FA[k])})`}
+ const act=id=>FA[id]>0;
+ $('wm').style.opacity=(t>B.t1&&!fk)?Math.min(1,(t-B.t1)/.6):0;
+ const wk=W('kin'); vis(kin,t,wk.a,wk.b); const K=wk.k;
+ const kk=(id,a)=>{const e=$(id);e.style.opacity=cl((t-a)/.25);e.style.transform=`scale(${t>=a&&t-a<.4?.8+.2*back((t-a)/.4):1})`;e.style.display='inline-block'};
+ kk('k100',K[0]);kk('karr',K[1]);kk('k10k',K[1]+.1);kk('k30',K[2]);
+ $('k10k').textContent='$'+Math.round(10000*ease((t-K[1]-.1)/1.3)).toLocaleString('en-US');
+ const wb=W('band');if(t>=wb.a&&t<=wb.b){band.style.opacity=1;const p=t-wb.a,L=wb.b-wb.a;const x=p<.35?-1300*(1-ease(p/.35)):p>L-.35?1300*ease((p-(L-.35))/.35):0;band.style.transform=`translateX(${x}px)`}else band.style.opacity=0;
+ if(act('visits')){const w=W('visits');popEl($('v0'),t,w.a+.15,0,.5);popEl($('varr'),t,w.k[0]-.15,0,.5);slamEl($('v2'),t,w.k[0]);popEl($('vlab'),t,w.k[1],0,.6);popEl($('vsub'),t,w.k[2],0,.6);fVis.style.translate=`${Math.sin(t*90)*shake(t,[w.k[0]])}px ${Math.cos(t*77)*shake(t,[w.k[0]])}px`}
+ const wn=W('newplan');if(t>=wn.a&&t<=wn.b){slamEl(sNew,t,wn.a,-8);sNew.style.opacity=Math.min(cl((t-wn.a)/.22),1-ease((t-(wn.b-.3))/.3))}else sNew.style.opacity=0;
+ const ws=W('six');if(vis(sSix,t,ws.a,ws.b,{pop:1})){popEl($('sx0'),t,ws.k[0]);popEl($('sx1'),t,ws.k[1]);$('sx2').style.opacity=cl((t-ws.k[2])/.25);$('sx3').style.opacity=cl((t-ws.k[3])/.25);$('sx4').style.opacity=cl((t-ws.k[4])/.25)}
+ if(act('bets')){const w=W('bets');BETS.forEach((x,i)=>{const a=i===0?w.a+.15:w.k[i-1];const e=$('bt'+i);e.style.opacity=cl((t-a)/.25);e.style.transform=`translateX(${60*(1-ease((t-a)/.3))}px)`});$('feed').style.opacity=cl((t-w.k[3])/.3);fBets.style.translate=`${Math.sin(t*90)*shake(t,[w.k[4]])}px 0`}
+ const wsp=W('spot'); spotlight(t,wsp.a,wsp.b);
+ if(act('wall')){const w=W('wall');const s=$('sold');slamEl(s,t,w.k[0],-12);fWall.style.translate=`${Math.sin(t*90)*shake(t,[w.k[0]])}px ${Math.cos(t*77)*shake(t,[w.k[0]])}px`}
+ flash(t,W('wall').a,0.1);
+ const wt=W('tmrw');if(t>=wt.a&&t<=wt.b){slamEl(sTm,t,wt.a,-7);sTm.style.opacity=Math.min(cl((t-wt.a)/.22),1-ease((t-(wt.b-.3))/.3))}else sTm.style.opacity=0;
+ const wq=W('ask');vis(sAsk,t,wq.a,wq.b,{pop:1});
+ $('end').style.opacity=ease((t-(P.TOTAL-3))/.7);
+ const cap=$('cap'),ci=$('capin');const c=CAPS.find(c=>t>=c.t0&&t<c.t1);
+ if(!c||t>P.TOTAL-3.2){cap.style.opacity=0}else{
+  let y=1400; if(t<I.t1+.2)y=1110;
+  cap.style.top=y+'px';cap.style.opacity=1;const p=(t-c.t0)/.12;cap.style.transform=`scale(${p<1?.9+.1*ease(p):1})`;
+  ci.innerHTML=c.w.map(w=>`<span style="color:${t>=w.s-.03&&t<w.e+.06?'#36d0c2':'#f7f4ec'}">${w.w}</span>`).join(' ')}
+};
+</script></body></html>
