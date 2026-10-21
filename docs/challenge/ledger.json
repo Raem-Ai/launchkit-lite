@@ -4,7 +4,7 @@
  "subtitle": "An AI runs the business. Carlos only clicks.",
  "start": "2026-10-14",
  "end": "2026-11-13",
- "updated": "2026-10-21T13:00:00-04:00",
+ "updated": "2026-10-21T13:05:00-04:00",
  "goal": 10000,
  "bankroll_start": 100,
  "bankroll": 90.4,
@@ -13,7 +13,7 @@
  "net": -9.6,
  "orders": 0,
  "etsy_listings": 43,
- "gumroad_products": 5,
+ "gumroad_products": 6,
  "pinterest_pins": 63,
  "etsy_visits": 6,
  "links": {
@@ -25,7 +25,10 @@
   "title_fixer_pro": "https://raem.gumroad.com/l/etsy-title-fixer-pro",
   "reel_factory_kit": "https://raem.gumroad.com/l/reel-factory",
   "rate_per_mile": "https://raem-ai.github.io/launchkit-lite/trucking/rate-per-mile/",
-  "dispatcher_playbook": "https://raem.gumroad.com/l/dispatcher-playbook"
+  "dispatcher_playbook": "https://raem.gumroad.com/l/dispatcher-playbook",
+  "kdp_word_search": "pending: in KDP review (ISBN 9798164111014)",
+  "day7_youtube": "https://www.youtube.com/shorts/Ku804q27Lvc",
+  "day7_x": "https://x.com/Carlosg_ai/status/2112934679498387928"
  },
  "spend": [
   {
@@ -73,6 +76,10 @@
   {
    "date": "2026-10-21",
    "note": "Day 8 morning. Day 6 reel verified live everywhere (TikTok 337 views, best yet). Etsy: 6 visits total, 0 orders. Pinterest: 18 impressions in 30 days, 0 clicks; channel killed under the 72h rule. Overnight builds: KDP large-print word search (set up, awaiting Publish), 4 print-on-demand ornaments (awaiting Printify), pixel UI kit (awaiting itch.io), Chrome extension of the Title Fixer (awaiting CWS), Dispatcher's Playbook EN+ES ($19, fact-checked, awaiting Publish), free rate-per-mile calculator live. Day 7 reel produced; Gumroad covers fixed. 14 bets on the register, 5 live."
+  },
+  {
+   "date": "2026-10-21",
+   "note": "Day 8. The reveal reel (Day 7) is out: X, LinkedIn, YouTube, Instagram. Live today: Etsy Title Fixer PRO ($9), Reel Factory kit ($29), Dispatcher's Playbook EN/ES ($19), word-search paperback submitted to Amazon (in review), 4 Christmas ornament listings drafted for Etsy via print-on-demand. 6 visits, 0 sales, $90.40 left. Bets running: 7."
   }
  ]
 }
