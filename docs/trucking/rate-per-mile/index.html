@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rate Per Mile Calculator</title>
+<meta name="description" content="Free rate-per-mile and trip-profit calculator for owner-operators and dispatchers. Fuel, deadhead, tolls, driver pay, factoring, fixed costs per day. Tells you the break-even rate before you take the load. Works offline, nothing is stored.">
+<style>
+:root{--bg:#0b0f14;--card:#121922;--ink:#f2f4f7;--muted:#9aa7b4;--line:rgba(255,255,255,.1);--good:#3ddc97;--bad:#ff5a5f;--amber:#f5b942;--accent:#4aa3ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:40px 18px 80px}
+.hud{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 8px}
+.lead{color:var(--muted);margin:0 0 24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h2{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+label{display:block;font-size:14px;color:var(--muted);margin:10px 0 4px}
+input,select{width:100%;background:#0b0f14;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:17px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.big{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.kpi{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#0b0f14}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+@media(max-width:700px){.kpis{grid-template-columns:1fr}}
+.verdict{margin-top:16px;padding:16px;border-radius:12px;font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+td{padding:7px 0;border-top:1px solid var(--line)}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.btn{display:inline-block;background:var(--accent);color:#06101a;font-weight:800;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;font-size:16px}
+.foot{color:var(--muted);font-size:14px;margin-top:36px}
+a{color:var(--accent)}
+.es{display:none}
+body.es .en{display:none}body.es .es{display:inline}
+</style></head><body><div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="hud"><span class="en">Free · for owner-operators and dispatchers</span><span class="es">Gratis · para owner-operators y dispatchers</span></div><button class="btn" style="background:#1b2430;color:var(--ink);padding:8px 14px" onclick="document.body.classList.toggle('es')">EN / ES</button></div>
+<h1><span class="en">Should you take this load?</span><span class="es">¿Te conviene tomar esta carga?</span></h1>
+<p class="lead"><span class="en">Rate per mile is not profit per mile. Put in the real numbers (deadhead, fuel, tolls, driver pay, factoring, your fixed costs per day) and see what the load actually pays, and the lowest rate you can accept and still break even.</span><span class="es">La tarifa por milla no es la ganancia por milla. Pon los números reales (millas vacías, diésel, peajes, pago del chofer, factoring, tus costos fijos por día) y mira cuánto deja la carga de verdad, y la tarifa mínima que puedes aceptar sin perder.</span></p>
+
+<div class="grid">
+<div class="card"><h2><span class="en">The load</span><span class="es">La carga</span></h2>
+<label><span class="en">Rate offered ($, all-in)</span><span class="es">Tarifa ofrecida ($, todo incluido)</span></label><input id="rate" type="number" value="2400">
+<div class="row"><div><label><span class="en">Loaded miles</span><span class="es">Millas cargadas</span></label><input id="loaded" type="number" value="1150"></div><div><label><span class="en">Deadhead miles</span><span class="es">Millas vacías</span></label><input id="dead" type="number" value="120"></div></div>
+<div class="row"><div><label><span class="en">Tolls ($)</span><span class="es">Peajes ($)</span></label><input id="tolls" type="number" value="90"></div><div><label><span class="en">Days on this load</span><span class="es">Días en esta carga</span></label><input id="days" type="number" value="2" step="0.5"></div></div>
+<div class="row"><div><label><span class="en">Lumper / other ($)</span><span class="es">Lumper / otros ($)</span></label><input id="other" type="number" value="0"></div><div><label><span class="en">Detention paid to you ($)</span><span class="es">Detention que te pagan ($)</span></label><input id="det" type="number" value="0"></div></div>
+</div>
+<div class="card"><h2><span class="en">Your truck</span><span class="es">Tu camión</span></h2>
+<div class="row"><div><label><span class="en">Diesel ($/gal)</span><span class="es">Diésel ($/gal)</span></label><input id="fuel" type="number" value="3.85" step="0.01"></div><div><label>MPG</label><input id="mpg" type="number" value="6.5" step="0.1"></div></div>
+<div class="row"><div><label><span class="en">Driver pay</span><span class="es">Pago del chofer</span></label><select id="paymode"><option value="cpm">¢ per loaded mile</option><option value="pct">% of rate</option><option value="flat">$ flat for this load</option><option value="none">I drive it myself</option></select></div><div><label><span class="en">Driver pay amount</span><span class="es">Monto</span></label><input id="pay" type="number" value="60"></div></div>
+<div class="row"><div><label><span class="en">Factoring fee (%)</span><span class="es">Factoring (%)</span></label><input id="factor" type="number" value="3" step="0.1"></div><div><label><span class="en">Dispatch fee (%)</span><span class="es">Comisión de dispatch (%)</span></label><input id="disp" type="number" value="0" step="0.1"></div></div>
+<label><span class="en">Fixed costs per day ($): truck + trailer payment, insurance, plates, permits, ELD, phone ÷ 30</span><span class="es">Costos fijos por día ($): pagos del camión y trailer, seguro, placas, permisos, ELD, teléfono ÷ 30</span></label><input id="fixed" type="number" value="210">
+<label><span class="en">Maintenance + tires reserve (¢ per mile)</span><span class="es">Reserva de mantenimiento y llantas (¢ por milla)</span></label><input id="maint" type="number" value="18">
+</div>
+</div>
+
+<div class="card" style="margin-top:18px">
+<h2><span class="en">What this load actually pays</span><span class="es">Lo que deja esta carga de verdad</span></h2>
+<div class="kpis">
+<div class="kpi"><span class="hud"><span class="en">Rate per loaded mile</span><span class="es">Tarifa por milla cargada</span></span><span class="big" id="rpm">–</span></div>
+<div class="kpi"><span class="hud"><span class="en">Rate per ALL miles</span><span class="es">Tarifa por TODAS las millas</span></span><span class="big" id="rpmall">–</span></div>
+<div class="kpi"><span class="hud"><span class="en">Profit after everything</span><span class="es">Ganancia después de todo</span></span><span class="big" id="profit">–</span></div>
+</div>
+<div class="kpis">
+<div class="kpi"><span class="hud"><span class="en">Profit per day</span><span class="es">Ganancia por día</span></span><span class="big" id="ppd" style="font-size:32px">–</span></div>
+<div class="kpi"><span class="hud"><span class="en">Break-even rate (all-in)</span><span class="es">Tarifa de equilibrio (todo incluido)</span></span><span class="big" id="be" style="font-size:32px">–</span></div>
+<div class="kpi"><span class="hud"><span class="en">Break-even per loaded mile</span><span class="es">Equilibrio por milla cargada</span></span><span class="big" id="bepm" style="font-size:32px">–</span></div>
+</div>
+<div class="verdict" id="verdict"></div>
+<table id="breakdown"></table>
+<p style="margin-top:14px"><button class="btn" onclick="copyLine()"><span class="en">Copy a one-line summary</span><span class="es">Copiar resumen de una línea</span></button> <span id="copied" style="color:var(--muted);margin-left:10px"></span></p>
+</div>
+
+<p class="foot"><span class="en">Numbers stay in your browser; nothing is sent or stored. Defaults are typical, not yours: change them. Built by RAEM (raem.ai), a Miami company run by someone who dispatches trucks for a living, as part of the <a href="https://carlosg.ai/challenge">$100 → $10,000 challenge</a>. Want the dispatcher's playbook (broker scripts, rate negotiation, detention and TONU language, in English and Spanish)? It's coming this week at the same link.</span><span class="es">Los números se quedan en tu navegador; no se envía ni se guarda nada. Los valores por defecto son típicos, no los tuyos: cámbialos. Hecho por RAEM (raem.ai), una empresa de Miami dirigida por alguien que despacha camiones todos los días.</span></p>
+</div>
+<script>
+const $=id=>document.getElementById(id); const n=id=>parseFloat($(id).value)||0; const money=x=>(x<0?'-':'')+'$'+Math.abs(x).toLocaleString('en-US',{maximumFractionDigits:0}); const pm=x=>'$'+x.toFixed(2);
+function calc(){
+  const rate=n('rate'),loaded=n('loaded'),dead=n('dead'),tolls=n('tolls'),days=Math.max(0.5,n('days')),other=n('other'),det=n('det');
+  const fuel=n('fuel'),mpg=Math.max(1,n('mpg')),mode=$('paymode').value,pay=n('pay'),factor=n('factor')/100,disp=n('disp')/100,fixed=n('fixed'),maint=n('maint')/100;
+  const all=loaded+dead, gross=rate+det;
+  const fuelCost=all/mpg*fuel, maintCost=all*maint, fixedCost=fixed*days;
+  const driver=mode==='cpm'?loaded*pay/100:mode==='pct'?gross*pay/100:mode==='flat'?pay:0;
+  const factorCost=gross*factor, dispCost=gross*disp;
+  const costs=fuelCost+maintCost+fixedCost+driver+factorCost+dispCost+tolls+other;
+  const profit=gross-costs;
+  // break-even: solve gross so that profit=0 with pct-based costs
+  const pctOfGross=(mode==='pct'?pay/100:0)+factor+disp;
+  const fixedPart=fuelCost+maintCost+fixedCost+(mode==='cpm'?loaded*pay/100:mode==='flat'?pay:0)+tolls+other;
+  const be=pctOfGross<1?fixedPart/(1-pctOfGross):Infinity;
+  $('rpm').textContent=loaded?pm(rate/loaded):'–'; $('rpmall').textContent=all?pm(rate/all):'–';
+  $('profit').textContent=money(profit); $('profit').style.color=profit>=0?'var(--good)':'var(--bad)';
+  $('ppd').textContent=money(profit/days); $('be').textContent=money(be-det); $('bepm').textContent=loaded?pm((be-det)/loaded):'–';
+  const v=$('verdict'); const margin=gross?profit/gross:0;
+  if(profit<0){v.style.background='rgba(255,90,95,.12)';v.style.color='var(--bad)';v.innerHTML='<span class="en">This load loses money. You need at least '+money(be-det)+' all-in to break even. Counter higher or pass.</span><span class="es">Esta carga pierde dinero. Necesitas al menos '+money(be-det)+' todo incluido para no perder. Pide más o déjala pasar.</span>'}
+  else if(margin<0.12){v.style.background='rgba(245,185,66,.12)';v.style.color='var(--amber)';v.innerHTML='<span class="en">Thin: '+Math.round(margin*100)+'% margin. One breakdown or a 6-hour wait at the dock wipes it out. Ask for detention terms in writing.</span><span class="es">Flojo: '+Math.round(margin*100)+'% de margen. Una avería o 6 horas esperando en el dock se lo comen. Pide detention por escrito.</span>'}
+  else {v.style.background='rgba(61,220,151,.12)';v.style.color='var(--good)';v.innerHTML='<span class="en">Worth it: '+Math.round(margin*100)+'% margin, '+money(profit/days)+' per day after all costs.</span><span class="es">Vale la pena: '+Math.round(margin*100)+'% de margen, '+money(profit/days)+' por día después de todos los costos.</span>'}
+  const rows=[['Gross (rate + detention)',gross],['Fuel ('+all+' mi ÷ '+mpg+' mpg × $'+fuel.toFixed(2)+')',-fuelCost],['Maintenance + tires reserve',-maintCost],['Fixed costs ('+days+' days × $'+fixed+')',-fixedCost],['Driver pay',-driver],['Factoring '+(factor*100).toFixed(1)+'%',-factorCost],['Dispatch '+(disp*100).toFixed(1)+'%',-dispCost],['Tolls',-tolls],['Lumper / other',-other],['Profit',profit]];
+  $('breakdown').innerHTML=rows.map(([k,v],i)=>'<tr'+(i===rows.length-1?' style="font-weight:800"':'')+'><td>'+k+'</td><td>'+money(v)+'</td></tr>').join('');
+  window.__line=`Load ${money(rate)} · ${loaded} loaded + ${dead} DH · ${pm(rate/Math.max(1,loaded))}/mi loaded, ${pm(rate/Math.max(1,all))}/mi all · profit ${money(profit)} (${money(profit/days)}/day) · break-even ${money(be-det)}`;
+}
+function copyLine(){navigator.clipboard.writeText(window.__line||'');$('copied').textContent='Copied';setTimeout(()=>$('copied').textContent='',1500)}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',calc)); calc();
+</script></body></html>
