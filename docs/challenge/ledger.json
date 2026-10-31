@@ -1,85 +1,144 @@
 {
- "schema": 1,
- "title": "$100 to $10,000 in 30 days",
- "subtitle": "An AI runs the business. Carlos only clicks.",
- "start": "2026-10-14",
- "end": "2026-11-13",
- "updated": "2026-10-21T13:05:00-04:00",
- "goal": 10000,
- "bankroll_start": 100,
- "bankroll": 90.4,
- "spent": 9.6,
- "revenue": 0,
- "net": -9.6,
- "orders": 0,
- "etsy_listings": 43,
- "gumroad_products": 6,
- "pinterest_pins": 63,
- "etsy_visits": 6,
- "links": {
-  "etsy": "https://raemstudios.etsy.com",
-  "gumroad": "https://raem.gumroad.com",
-  "free_repo": "https://github.com/Raem-Ai/launchkit-lite",
-  "etsy_title_fixer": "https://raem-ai.github.io/launchkit-lite/etsy-title-fixer/",
-  "reel_factory_github": "https://github.com/Raem-Ai/launchkit-lite/tree/main/reel-factory",
-  "title_fixer_pro": "https://raem.gumroad.com/l/etsy-title-fixer-pro",
-  "reel_factory_kit": "https://raem.gumroad.com/l/reel-factory",
-  "rate_per_mile": "https://raem-ai.github.io/launchkit-lite/trucking/rate-per-mile/",
-  "dispatcher_playbook": "https://raem.gumroad.com/l/dispatcher-playbook",
-  "kdp_word_search": "pending: in KDP review (ISBN 9798164111014)",
-  "day7_youtube": "https://www.youtube.com/shorts/Ku804q27Lvc",
-  "day7_x": "https://x.com/Carlosg_ai/status/2112934679498387928"
- },
- "spend": [
-  {
-   "date": "2026-10-15",
-   "amount": 1.6,
-   "what": "Etsy listing fees (8 listings)"
+  "schema": 1,
+  "title": "$100 to $10,000 in 30 days",
+  "subtitle": "An AI runs the business. Carlos only clicks.",
+  "start": "2026-10-14",
+  "end": "2026-11-13",
+  "updated": "2026-10-30T22:20:00-04:00",
+  "goal": 10000,
+  "bankroll_start": 100,
+  "bankroll": 41.6,
+  "spent": 58.4,
+  "revenue": 0,
+  "net": -58.4,
+  "orders": 0,
+  "etsy_listings": 292,
+  "gumroad_products": 50,
+  "pinterest_pins": 63,
+  "etsy_visits": 15,
+  "links": {
+    "etsy": "https://raemstudios.etsy.com",
+    "gumroad": "https://raem.gumroad.com",
+    "free_repo": "https://github.com/Raem-Ai/launchkit-lite",
+    "etsy_title_fixer": "https://raem-ai.github.io/launchkit-lite/etsy-title-fixer/",
+    "reel_factory_github": "https://github.com/Raem-Ai/launchkit-lite/tree/main/reel-factory",
+    "title_fixer_pro": "https://raem.gumroad.com/l/etsy-title-fixer-pro",
+    "reel_factory_kit": "https://raem.gumroad.com/l/reel-factory",
+    "rate_per_mile": "https://raem-ai.github.io/launchkit-lite/trucking/rate-per-mile/",
+    "dispatcher_playbook": "https://raem.gumroad.com/l/dispatcher-playbook",
+    "kdp_word_search": "pending: in KDP review (ISBN 9798164111014)",
+    "day7_youtube": "https://www.youtube.com/shorts/Ku804q27Lvc",
+    "day7_x": "https://x.com/Carlosg_ai/status/2112934679498387928"
   },
-  {
-   "date": "2026-10-16",
-   "amount": 2.6,
-   "what": "Etsy listing fees (13 listings)"
-  },
-  {
-   "date": "2026-10-17",
-   "amount": 4.8,
-   "what": "Etsy listing fees (24 new style editions)"
-  },
-  {
-   "date": "2026-10-20",
-   "amount": 0.6,
-   "what": "Etsy listing fees (3 bundles)"
-  }
- ],
- "log": [
-  {
-   "date": "2026-10-14",
-   "note": "Day 1. Rules set. Two coder products built and listed on Gumroad; free lite repo on GitHub."
-  },
-  {
-   "date": "2026-10-15",
-   "note": "Day 2. Third product (teacher planner). Etsy shop opened. Listing images built. Quiz page live."
-  },
-  {
-   "date": "2026-10-16",
-   "note": "Day 3. 21 Etsy listings live (planners, holiday games, fillable menus, invitations, Secret Santa, Letter to Santa, themed editions with sticker sheets). 43 Pinterest pins. 25% launch sale. 0 visits, 0 sales. Etsy Ads locked for new shops until ~Oct 30, so the next move is distribution: posts, a reel, this page."
-  },
-  {
-   "date": "2026-10-17",
-   "note": "Day 4. Every product redesigned with research-driven styles (still life, linocut, ski lodge, candyland, cut paper, card catalog, apothecary, pop art, dark academia, gummy y2k\u2026). 45 Etsy listings live, 53 Pinterest pins, listing videos in production. Still 0 sales."
-  },
-  {
-   "date": "2026-10-20",
-   "note": "Day 7. 4 visits, 0 sales. Strategy change: Etsy becomes one bet, not the business; parallel bets with a 72h kill-or-scale rule. Bet A shipped: Etsy Title Fixer, a free bookmarklet that scores titles against what buyers type. Day 6 reel posted. Evening: PRO full-shop tool built (40 listings in 73 s), three Etsy bundles live, reel pipeline open-sourced, Reel Factory kit packaged."
-  },
-  {
-   "date": "2026-10-21",
-   "note": "Day 8 morning. Day 6 reel verified live everywhere (TikTok 337 views, best yet). Etsy: 6 visits total, 0 orders. Pinterest: 18 impressions in 30 days, 0 clicks; channel killed under the 72h rule. Overnight builds: KDP large-print word search (set up, awaiting Publish), 4 print-on-demand ornaments (awaiting Printify), pixel UI kit (awaiting itch.io), Chrome extension of the Title Fixer (awaiting CWS), Dispatcher's Playbook EN+ES ($19, fact-checked, awaiting Publish), free rate-per-mile calculator live. Day 7 reel produced; Gumroad covers fixed. 14 bets on the register, 5 live."
-  },
-  {
-   "date": "2026-10-21",
-   "note": "Day 8. The reveal reel (Day 7) is out: X, LinkedIn, YouTube, Instagram. Live today: Etsy Title Fixer PRO ($9), Reel Factory kit ($29), Dispatcher's Playbook EN/ES ($19), word-search paperback submitted to Amazon (in review), 4 Christmas ornament listings drafted for Etsy via print-on-demand. 6 visits, 0 sales, $90.40 left. Bets running: 7."
-  }
- ]
+  "spend": [
+    {
+      "date": "2026-10-15",
+      "amount": 1.6,
+      "what": "Etsy listing fees (8 listings)"
+    },
+    {
+      "date": "2026-10-16",
+      "amount": 2.6,
+      "what": "Etsy listing fees (13 listings)"
+    },
+    {
+      "date": "2026-10-17",
+      "amount": 4.8,
+      "what": "Etsy listing fees (24 new style editions)"
+    },
+    {
+      "date": "2026-10-20",
+      "amount": 0.6,
+      "what": "Etsy listing fees (3 bundles)"
+    },
+    {
+      "date": "2026-10-22",
+      "amount": 0.8,
+      "what": "Etsy listing fees (4 print-on-demand ornaments)"
+    },
+    {
+      "date": "2026-10-25",
+      "amount": 1.0,
+      "what": "Etsy listing fees (5 new cute and anime-style products)"
+    },
+    {
+      "date": "2026-10-26",
+      "amount": 2.0,
+      "what": "Etsy listing fees (10 listings, start of the 10-a-day rule)"
+    },
+    {
+      "date": "2026-10-27",
+      "amount": 2.0,
+      "what": "Etsy listing fees (10 listings)"
+    },
+    {
+      "date": "2026-10-28",
+      "amount": 11.0,
+      "what": "Etsy listing fees (55 listings incl. overnight run)"
+    },
+    {
+      "date": "2026-10-29",
+      "amount": 8.4,
+      "what": "Etsy listing fees (42 listings incl. the toddler busy-book line)"
+    },
+    {
+      "date": "2026-10-30",
+      "amount": 23.6,
+      "what": "Etsy listing fees (118 listings in one day)"
+    }
+  ],
+  "log": [
+    {
+      "date": "2026-10-14",
+      "note": "Day 1. Rules set. Two coder products built and listed on Gumroad; free lite repo on GitHub."
+    },
+    {
+      "date": "2026-10-15",
+      "note": "Day 2. Third product (teacher planner). Etsy shop opened. Listing images built. Quiz page live."
+    },
+    {
+      "date": "2026-10-16",
+      "note": "Day 3. 21 Etsy listings live (planners, holiday games, fillable menus, invitations, Secret Santa, Letter to Santa, themed editions with sticker sheets). 43 Pinterest pins. 25% launch sale. 0 visits, 0 sales. Etsy Ads locked for new shops until ~Oct 30, so the next move is distribution: posts, a reel, this page."
+    },
+    {
+      "date": "2026-10-17",
+      "note": "Day 4. Every product redesigned with research-driven styles (still life, linocut, ski lodge, candyland, cut paper, card catalog, apothecary, pop art, dark academia, gummy y2k…). 45 Etsy listings live, 53 Pinterest pins, listing videos in production. Still 0 sales."
+    },
+    {
+      "date": "2026-10-20",
+      "note": "Day 7. 4 visits, 0 sales. Strategy change: Etsy becomes one bet, not the business; parallel bets with a 72h kill-or-scale rule. Bet A shipped: Etsy Title Fixer, a free bookmarklet that scores titles against what buyers type. Day 6 reel posted. Evening: PRO full-shop tool built (40 listings in 73 s), three Etsy bundles live, reel pipeline open-sourced, Reel Factory kit packaged."
+    },
+    {
+      "date": "2026-10-21",
+      "note": "Day 8 morning. Day 6 reel verified live everywhere (TikTok 337 views, best yet). Etsy: 6 visits total, 0 orders. Pinterest: 18 impressions in 30 days, 0 clicks; channel killed under the 72h rule. Overnight builds: KDP large-print word search (set up, awaiting Publish), 4 print-on-demand ornaments (awaiting Printify), pixel UI kit (awaiting itch.io), Chrome extension of the Title Fixer (awaiting CWS), Dispatcher's Playbook EN+ES ($19, fact-checked, awaiting Publish), free rate-per-mile calculator live. Day 7 reel produced; Gumroad covers fixed. 14 bets on the register, 5 live."
+    },
+    {
+      "date": "2026-10-21",
+      "note": "Day 8. The reveal reel (Day 7) is out: X, LinkedIn, YouTube, Instagram. Live today: Etsy Title Fixer PRO ($9), Reel Factory kit ($29), Dispatcher's Playbook EN/ES ($19), word-search paperback submitted to Amazon (in review), 4 Christmas ornament listings drafted for Etsy via print-on-demand. 6 visits, 0 sales, $90.40 left. Bets running: 7."
+    },
+    {
+      "date": "2026-10-22",
+      "note": "Day 9. Day 7 reel hit 1,347 views on Instagram, the best yet. Two more large-print puzzle books built for Amazon. A quality check caught offensive words hiding in the random letters of a word search; every book was rebuilt and re-scanned clean before any sale. Fiverr gigs went live and got hit by 5 scam messages in an hour (reported and blocked). $89.60 left."
+    },
+    {
+      "date": "2026-10-24",
+      "note": "Day 11. Pivot to services: the AI started offering $149 Black Friday video ads to small online shops, with a free 5-second preview. Applied to the Meta Global AI Developer Hackathon. Still $0 in sales."
+    },
+    {
+      "date": "2026-10-26",
+      "note": "Day 13. First cold-outreach emails sent to independent shops. New rule from Carlos: at least 10 new listings every day. Etsy at 67 listings."
+    },
+    {
+      "date": "2026-10-28",
+      "note": "Day 15. Daily trend research before building anything. Second outreach batch sent; two shops replied no thanks and are never contacted again. An overnight production run pushed Etsy past 140 listings."
+    },
+    {
+      "date": "2026-10-29",
+      "note": "Day 16. A new toddler line: busy books, coloring and tracing pages across 12 themes, built mostly by code to save image credits. $65.20 left."
+    },
+    {
+      "date": "2026-10-30",
+      "note": "Day 17. 118 new listings in one day (174 to 292), aimed at new buyers: large-print puzzles for seniors, story coloring books, mazes, 2027 calendars, party games. First Etsy Ads ($1/day cap): 19 views, 0 clicks, $0 spent. A 25% holiday sale starts Oct 31, and Cyber Week is set at 30% off. The shop got a new logo and banner, plus four studio-style product videos and a 23-second commercial. Still $0 revenue, $41.60 left, 14 days to go."
+    }
+  ]
 }
