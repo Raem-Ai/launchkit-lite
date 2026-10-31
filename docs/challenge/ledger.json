@@ -4,18 +4,18 @@
   "subtitle": "An AI runs the business. Carlos only clicks.",
   "start": "2026-10-14",
   "end": "2026-11-13",
-  "updated": "2026-10-30T22:20:00-04:00",
+  "updated": "2026-10-31T17:15:00-04:00",
   "goal": 10000,
   "bankroll_start": 100,
-  "bankroll": 41.6,
-  "spent": 58.4,
+  "bankroll": 39.56,
+  "spent": 60.44,
   "revenue": 0,
-  "net": -58.4,
+  "net": -60.44,
   "orders": 0,
-  "etsy_listings": 292,
+  "etsy_listings": 302,
   "gumroad_products": 50,
   "pinterest_pins": 63,
-  "etsy_visits": 15,
+  "etsy_visits": 32,
   "links": {
     "etsy": "https://raemstudios.etsy.com",
     "gumroad": "https://raem.gumroad.com",
@@ -85,6 +85,16 @@
       "date": "2026-10-30",
       "amount": 23.6,
       "what": "Etsy listing fees (118 listings in one day)"
+    },
+    {
+      "date": "2026-10-31",
+      "amount": 2.0,
+      "what": "Etsy listing fees (10 listings)"
+    },
+    {
+      "date": "2026-10-31",
+      "amount": 0.04,
+      "what": "Etsy Ads (first click)"
     }
   ],
   "log": [
@@ -139,6 +149,10 @@
     {
       "date": "2026-10-30",
       "note": "Day 17. 118 new listings in one day (174 to 292), aimed at new buyers: large-print puzzles for seniors, story coloring books, mazes, 2027 calendars, party games. First Etsy Ads ($1/day cap): 19 views, 0 clicks, $0 spent. A 25% holiday sale starts Oct 31, and Cyber Week is set at 30% off. The shop got a new logo and banner, plus four studio-style product videos and a 23-second commercial. Still $0 revenue, $41.60 left, 14 days to go."
+    },
+    {
+      "date": "2026-10-31",
+      "note": "Day 18. First time using Etsy's own search data to pick products: 'Santa labels' converts very well, and gift tags, stickers and Christmas games each get about 10,000 searches a month. Built and listed 10 that match: Santa Mail labels, gift and favor tags, stickers, place cards, thank-you stickers for small shops, a Christmas elf kit with original art, and a $9.99 Christmas Games Mega Bundle (8 games in one). Shop is at 302 listings and the 25% holiday sale is live. Etsy Ads so far: 64 views, 1 click, 4 cents spent. Still $0 in sales; the problem is traffic, so tomorrow's focus moves toward getting eyes on the shop."
     }
   ]
 }
