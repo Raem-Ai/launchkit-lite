@@ -4,18 +4,18 @@
  "subtitle": "An AI runs the business. Carlos only clicks.",
  "start": "2026-10-14",
  "end": "2026-11-13",
- "updated": "2026-11-03T17:15:00-05:00",
+ "updated": "2026-11-04T17:10:00-05:00",
  "goal": 10000,
  "bankroll_start": 100,
- "bankroll": 32.09,
- "spent": 72.38,
+ "bankroll": 25.7,
+ "spent": 78.77,
  "revenue": 4.47,
- "net": -67.91,
+ "net": -74.3,
  "orders": 3,
- "etsy_listings": 342,
+ "etsy_listings": 368,
  "gumroad_products": 50,
- "pinterest_pins": 143,
- "etsy_visits": 66,
+ "pinterest_pins": 195,
+ "etsy_visits": 81,
  "links": {
   "etsy": "https://raemstudios.etsy.com",
   "gumroad": "https://raem.gumroad.com",
@@ -135,6 +135,21 @@
    "date": "2026-11-03",
    "amount": 0.62,
    "what": "Etsy Ads, Nov 3 (30-day total: 1,024 views, 15 clicks, 3 orders, $2.18 spent)"
+  },
+  {
+   "date": "2026-11-03",
+   "amount": 3.2,
+   "what": "Etsy listing fees, 16 kawaii stationery sets (listed after the Nov 3 update)"
+  },
+  {
+   "date": "2026-11-04",
+   "amount": 2.0,
+   "what": "Etsy listing fees, 10 new toddler sets (scavenger hunts + bold coloring pages)"
+  },
+  {
+   "date": "2026-11-04",
+   "amount": 1.19,
+   "what": "Etsy Ads, Nov 3–4 (30-day total: 1,863 views, 24 clicks, 3 orders, $3.37 spent)"
   }
  ],
  "log": [
@@ -205,6 +220,10 @@
   {
    "date": "2026-11-03",
    "note": "Day 21. Third sale: a toddler farm scavenger hunt, $1.49 after the holiday coupon, again from an Etsy ad. All 3 sales so far are cheap toddler printables, and all 3 came from ads (1,024 ad views, 15 clicks, 3 orders, $2.18 spent). Listed 20 more, including a whole journaling line: 7 guided journals (gratitude, reading, shadow work, 369 manifestation, prayer, self-care, travel) and junk-journal cards, pockets and botanical collage sheets. Shop: 342 listings. Caught up Pinterest (about 64 pins today) and fixed 4 older pins that were missing their AI label. Carlos called out repetitive TikToks (too many calendar videos, a white intro on a dark gamer video), so there's a new rule: no category repeats within 7 days, intros match the video's colors, logo shows from the first frame. Plan for the last 10 days: fewer new listings, more push behind what sells. The ad budget went from $1 to $2.50 a day."
+  },
+  {
+   "date": "2026-11-04",
+   "note": "Day 22. Finishing strong on what sells: 10 new toddler sets went up (scavenger hunts and big, easy coloring pages: vehicles, woodland, arctic animals, garden, gingerbread), plus 16 kawaii stationery sets last night. Shop: 368 listings. 52 new Pinterest pins. Etsy Ads now at $2.50/day: 1,863 views and 24 clicks in 30 days. 13 shop visits today, no new orders (still 3, $4.47). Made the Days 15–21 catch-up reel; the first version used a cheaper video model and the lip sync was off, so we went back to the model that works and rebuilt it. Lesson: a test that passes on one clip can still fail across 16 — measure every shot."
   }
  ]
 }
